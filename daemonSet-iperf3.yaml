@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: iperf3-server
+  #  namespace: admin
+  labels:
+    app: iperf3
+spec:
+  selector:
+    matchLabels:
+      app: iperf3
+  template:
+    metadata:
+      labels:
+        app: iperf3
+    spec:
+      containers:
+        - name: iperf3-server
+          image: harbor.mr-elamin.com/library/iperf3-server:latest
+          imagePullPolicy: Always
+          args: ["-p", "5201", "-V"]
+          ports:
+            - containerPort: 5201
+              name: iperf3
+          # resources:
+          #   limits:
+          #     cpu: "1"
+          #     memory: "512Mi"
+          #   requests:
+          #     cpu: "0.05"
+          #     memory: "256Mi"
+      restartPolicy: Always
