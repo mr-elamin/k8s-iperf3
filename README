@@ -1,3 +1,4 @@
+
 ### README
 
 # iperf3 Network Benchmarking in Kubernetes
@@ -26,14 +27,24 @@ cd k8s-iperf3
 Apply the DaemonSet YAML to deploy `iperf3` server pods on each node in your Kubernetes cluster. The image can be pulled from the public registry:
 
 ```sh
-kubectl apply -f daemonset-iperf3.yaml
+kubectl apply -f daemonSet-iperf3.yaml
 ```
 
-### 3. Run the Benchmark Script
+### 3. Update the Namespace in the Script
 
-Execute the benchmark script to run `iperf3` tests between the deployed pods:
+Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches the namespace specified in the script. By default, the script uses the admin namespace. If you deployed the DaemonSet in a different namespace, update the `NAMESPACE` variable in the run-iperf3-tests.sh script accordingly:
+
+```bash
+# Namespace where the iperf3 DaemonSet is deployed
+NAMESPACE="your-namespace"
+```
+
+### 4. Run the Benchmark Script
+
+Make the script executable and then execute it to run `iperf3` tests between the deployed pods:
 
 ```sh
+chmod +x run-iperf3-tests.sh
 ./run-iperf3-tests.sh
 ```
 
