@@ -21,17 +21,9 @@ git clone https://github.com/mr-elamin/k8s-iperf3.git
 cd k8s-iperf3
 ```
 
-### 2. Deploy the DaemonSet
+### 2. Update the Namespace in the Script (Optional)
 
-Apply the DaemonSet YAML to deploy `iperf3` server pods on each node in your Kubernetes cluster. The image can be pulled from the public registry:
-
-```sh
-kubectl apply -f daemonSet-iperf3.yaml
-```
-
-### 3. Update the Namespace in the Script
-
-Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches the namespace specified in the script. By default, the script uses the default namespace. If you want to deploy the DaemonSet in a different namespace, update the `NAMESPACE` variable in the run-iperf3-tests.sh script and the namespace in daemonSet-ipref3.yaml accordingly. You can find the lines to change in:
+If you want to deploy the DaemonSet in a different namespace than the default, update the `NAMESPACE` variable in the run-iperf3-tests.sh script and the namespace in daemonSet-iperf3.yaml accordingly before deployment. You can find the lines to change in:
 
 - [daemonSet-iperf3.yaml line 5](https://github.com/mr-elamin/k8s-iperf3/blob/main/daemonSet-iperf3.yaml#L5)
 - [run-iperf3-tests.sh line 4](https://github.com/mr-elamin/k8s-iperf3/blob/main/run-iperf3-tests.sh#L4)
@@ -41,7 +33,17 @@ Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches t
 NAMESPACE="your-namespace"
 ```
 
+### 3. Deploy the DaemonSet
+
+Apply the DaemonSet YAML to deploy `iperf3` server pods on each node in your Kubernetes cluster. The image can be pulled from the public registry:
+
+```sh
+kubectl apply -f daemonSet-iperf3.yaml
+```
+
 ### 4. Run the Benchmark Script
+
+**Prerequisites:** The script must be run from a client machine where the `kubectl` command is available and the user must have cluster admin role configured in their `~/.kube/config` file.
 
 Make the script executable and then execute it to run `iperf3` tests between the deployed pods:
 
