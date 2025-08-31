@@ -1,4 +1,3 @@
-
 ### README
 
 # iperf3 Network Benchmarking in Kubernetes
@@ -35,7 +34,8 @@ kubectl apply -f daemonSet-iperf3.yaml
 Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches the namespace specified in the script. By default, the script uses the default namespace. If you want to deploy the DaemonSet in a different namespace, update the `NAMESPACE` variable in the run-iperf3-tests.sh script and the namespace in daemonSet-ipref3.yaml accordingly. You can find the lines to change in:
 
 - [daemonSet-iperf3.yaml line 5](https://github.com/mr-elamin/k8s-iperf3/blob/main/daemonSet-iperf3.yaml#L5)
-- [run-iperf3-tests.sh line 5](https://github.com/mr-elamin/k8s-iperf3/blob/main/run-iperf3-tests.sh#L5)
+- [run-iperf3-tests.sh line 4](https://github.com/mr-elamin/k8s-iperf3/blob/main/run-iperf3-tests.sh#L4)
+
 ```bash
 # Namespace where the iperf3 DaemonSet is deployed
 NAMESPACE="your-namespace"
@@ -88,3 +88,7 @@ Connecting to host 10.0.0.2, port 5201
 - **Consistent Results**: Across multiple tests, consistent results indicate a well-performing network.
 
 By following these steps, you can benchmark the network performance within your Kubernetes cluster and gain insights into the network's reliability and capacity.
+
+---
+
+Feel free to report any issue or make any suggestions.
