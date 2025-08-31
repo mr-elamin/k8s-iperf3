@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: iperf3-server
-  #  namespace: admin
+  namespace: default
   labels:
     app: iperf3
 spec:
