@@ -32,7 +32,10 @@ kubectl apply -f daemonSet-iperf3.yaml
 
 ### 3. Update the Namespace in the Script
 
-Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches the namespace specified in the script. By default, the script uses the default namespace. If you want to deploy the DaemonSet in a different namespace, update the `NAMESPACE` variable in the run-iperf3-tests.sh script and the namespace in daemonSet-ipref3.yaml accordingly. You can find the lines to change [here]https://github.com/mr-elamin/k8s-iperf3/blob/e749c8dcedff3184e787766d4e2aeb625b74adef/daemonSet-iperf3.yaml#L5 and [here]https://github.com/mr-elamin/k8s-iperf3/blob/b43b04c3cb46dd48db297fd2db940b13cedb2d9c/daemonSet-iperf3.yaml#L5C21-L5C22:
+Ensure that the namespace in which the `iperf3` DaemonSet was deployed matches the namespace specified in the script. By default, the script uses the default namespace. If you want to deploy the DaemonSet in a different namespace, update the `NAMESPACE` variable in the run-iperf3-tests.sh script and the namespace in daemonSet-ipref3.yaml accordingly. You can find the lines to change in:
+
+- [daemonSet-iperf3.yaml line 5](https://github.com/mr-elamin/k8s-iperf3/blob/main/daemonSet-iperf3.yaml#L5)
+- [run-iperf3-tests.sh line 5](https://github.com/mr-elamin/k8s-iperf3/blob/main/run-iperf3-tests.sh#L5)
 ```bash
 # Namespace where the iperf3 DaemonSet is deployed
 NAMESPACE="your-namespace"
