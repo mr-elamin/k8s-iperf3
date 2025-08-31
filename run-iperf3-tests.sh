@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Namespace where the iperf3 DaemonSet is deployed
-NAMESPACE="admin"
+NAMESPACE="default"
 
 # Define colors
 RED='\033[0;31m'
